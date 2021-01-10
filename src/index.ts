@@ -1,11 +1,12 @@
 import 'reflect-metadata';
 import {connect} from './config/typeorm';
-import {startServer} from './app'
+import {startServer} from './app';
+import { ENV_VARIABLES } from './config';
 
 const main = async () => {
     connect();
     const app = await startServer();
-    app.listen(3000, () => console.log('Server on port ', 3000));
+    app.listen(ENV_VARIABLES.PORT, () => console.log(`API running on port ${ENV_VARIABLES.PORT} in environment ${ENV_VARIABLES.ENVIRONMENT}`));
 }
 
 main();

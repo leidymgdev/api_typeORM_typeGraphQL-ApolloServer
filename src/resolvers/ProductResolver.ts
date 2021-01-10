@@ -1,51 +1,33 @@
 import {Resolver, Query, Mutation, Arg, Field, Int, InputType} from 'type-graphql'
 
 import { Product } from '../entity/Product';
+import { ProductInput } from '../dto/Product/ProductInput';
+import { ProductUpdate } from '../dto/Product/ProductUpdate';
 
-@InputType()
-class ProductInput {
-  @Field(() => String)
-  name!: string;
-
-  @Field(() => Int)
-  quantity!: number;
-}
-
-@InputType()
-class ProductUpdate {
-  @Field(() => String, {nullable: true})
-  name?: string;
-
-  @Field(() => Int, {nullable: true})
-  quantity?: number;
-}
+import {createProduct, deleteProduct, updateProduct, getAllProducts} from '../controllers/client.controller';
 
 @Resolver()
 export class ProductResolver {
     
     @Mutation(() => Product)
     async createProduct(@Arg('variables', () => ProductInput) variables: ProductInput) {
-        const newProduct = Product.create(variables);
-        return await newProduct.save();
+        return createProduct(variables);
     }
 
     @Mutation(() => Boolean)
     async deleteProduct(@Arg('id', () => Int) id: number) {
-        const productDeleted = await Product.delete(id);
-        console.log(productDeleted);
-        return true;
+        return deleteProduct(id);
     }
 
     @Mutation(() => Boolean)
     async updateProduct(
         @Arg('id', () => Int) id: number, 
         @Arg('fields', () => ProductUpdate) fields: ProductUpdate) {
-            await Product.update({id}, fields);
-            return true;
+            return updateProduct(id, fields);
     }
 
     @Query(() => [Product])
     getAllProducts() {
-        return Product.find();
+        return getAllProducts();
     }
 }
