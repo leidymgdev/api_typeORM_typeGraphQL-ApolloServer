@@ -22,7 +22,7 @@ In this API you can allow to manage products.
 
 This README.md will guide you on how to install and use this API.
 
-## Installation and initialization
+## Installation and initialization 
 
 ### Clone the repository or download the zip:
 
