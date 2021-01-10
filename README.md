@@ -7,15 +7,16 @@ In this API you can allow to manage products.
 ## Technologies and packages used for development
 
 - Node.js
-- Express
+- Express (framework for running javascript code in server side, allow to create a http server).
 - dotenv (for managing environment variables)
-- apollo-server-express
-- reflect-metadata
-- type-graphql
-- typeorm
-- MySQL
-- ts-node
-- typescript
+- apollo-server-express (for configuring endpoints of graphql, resolvers and type definitions)
+- typeorm (module with data base funtionalities)
+- reflect-metadata (needed to use that typeorm works because use typescript with decorators, configurations, etc)
+- type-graphql (integrate typescript with graphql through decorators for describing an schema and doesn't repeat typescript interfaces and graphql schemas)
+- MySQL (mysql connector module)
+- typescript and ts-node (for development, allow run node code with typescript code)
+- @types/express and @types/node (kind of express data and node)
+- nodemon (for restart the server when has code changes)
 
 # Getting Started
 
