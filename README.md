@@ -1,6 +1,6 @@
 # api_typeORM_typeGraphQL-ApolloServer
 
-My first api with TypeORM, Type-GraphQL and ApolloServer
+Api with TypeORM, Type-GraphQL and ApolloServer
 
 In this API you can allow to manage products.
 
